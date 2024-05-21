@@ -23,12 +23,12 @@ export default (dependencies: Dependencies) => {
         quantity: 1,
       };
 
-      const session = await stripe.checkout.sessions.create({ 
+      const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items: [lineItems],
         mode: "payment",
-        success_url: "http://localhost:4001/api/user/premium-success",
-        cancel_url: "http://localhost:5173/edit-profile/premium",
+        success_url: process.env.PAYMENT_SUCCESS_URL,
+        cancel_url: process.env.PAYMENT_CANCEL_URL,
       });
 
       res.status(HttpStatus.OK).json({ id: session.id });

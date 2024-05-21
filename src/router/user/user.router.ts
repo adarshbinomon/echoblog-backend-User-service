@@ -26,7 +26,7 @@ export default (dependencies: Dependencies) => {
     changePremiumStatusController,
   } = userController(dependencies);
 
-  router.post("/user-details", verifyUser, saveUserDataController);
+  router.post("/user-details", saveUserDataController);
   router.get("/user-profile/:id", verifyUser, getUserController);
   router.put("/edit-profile", verifyUser, editUserProfileController);
   router.post(
@@ -56,6 +56,9 @@ export default (dependencies: Dependencies) => {
 
   router.get("/find-all-users", verifyAdmin, findAllUsersAdminController);
   router.get("/user-chart-data", verifyAdmin, getMonthlyUserCountController);
+  router.get("/sample", (req, res) => {
+    res.send({ hi: "hello" });
+  });
 
   return router;
 };

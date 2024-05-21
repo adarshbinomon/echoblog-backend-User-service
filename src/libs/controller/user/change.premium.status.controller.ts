@@ -11,7 +11,6 @@ export default (dependencies: Dependencies) => {
   const {
     useCase: { chagePremiumStatusUseCase },
   } = dependencies;
-
   const changePremiumStatusController = async (
     req: AuthenticatedRequest,
     res: Response
@@ -24,7 +23,7 @@ export default (dependencies: Dependencies) => {
       ).executeFunction(user?._id);
 
       if (response.status) {
-        res.redirect("http://localhost:5173/edit-profile/premium/success");
+        res.redirect("https://echoblog.live/edit-profile/premium/success");
       } else {
         res
           .status(HttpStatus.INTERNAL_SERVER_ERROR)
